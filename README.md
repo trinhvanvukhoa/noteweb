@@ -1,117 +1,158 @@
 # SimpleNote
 
-Một ứng dụng web ghi chú đơn giản, cho phép người dùng tạo, chỉnh sửa, xóa và quản lý các ghi chú cá nhân một cách nhanh chóng, gọn nhẹ.
+Một ứng dụng web đơn giản để quản lý thông tin cá nhân, cài đặt giao diện và dữ liệu profile theo mô hình frontend + backend tách riêng.
 
 ## Giới thiệu
 
-SimpleNote được xây dựng nhằm giúp người dùng ghi lại ý tưởng, công việc cần làm hoặc thông tin quan trọng mọi lúc mọi nơi, với giao diện tối giản, dễ sử dụng.
+SimpleNote là dự án mẫu với hai phần chính:
+- Frontend: React + Vite
+- Backend: Node.js + Express
 
-## Tính năng
-
-- ✏️ Tạo ghi chú mới
-- 📖 Xem danh sách tất cả ghi chú
-- 🖊️ Chỉnh sửa nội dung ghi chú
-- 🗑️ Xóa ghi chú
-- 🔍 Tìm kiếm ghi chú theo từ khóa
-- 💾 Lưu trữ dữ liệu bền vững (database)
+Project này cho phép người dùng:
+- xem và cập nhật tên hiển thị
+- đổi theme giao diện (Sáng / Tối)
+- lưu mật khẩu vùng kín ở backend
+- gọi API từ frontend để đọc và cập nhật dữ liệu profile
 
 ## Công nghệ sử dụng
 
-**Backend (BE):**
-- Node.js
-- Express.js
-- (Database bạn dùng — ví dụ: MongoDB / MySQL / PostgreSQL)
-
-**Frontend (FE):**
+### Frontend
 - React
-- (Thư viện UI nếu có — ví dụ: TailwindCSS / Material UI)
+- Vite
+- React Router DOM
+- TailwindCSS
+
+### Backend
+- Node.js
+- Express
 
 ## Cấu trúc thư mục
 
-```
-my-project/
-├── BE/                 # Mã nguồn Backend (Node.js + Express)
-│   ├── src/
+```bash
+note_web/
+├── BE/
+│   ├── data/
+│   │   └── profile.json
+│   ├── index.js
 │   ├── package.json
-│   └── ...
-├── FE/                 # Mã nguồn Frontend (React)
+│   └── package-lock.json
+├── FE/
+│   ├── public/
 │   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── context/
+│   │   │   └── AppContext.jsx
+│   │   ├── pages/
+│   │   │   └── Settings.jsx
+│   │   ├── App.css
+│   │   ├── App.jsx
+│   │   ├── index.css
+│   │   └── main.jsx
+│   ├── eslint.config.js
+│   ├── index.html
 │   ├── package.json
-│   └── ...
-└── README.md
+│   ├── package-lock.json
+│   ├── README.md
+│   └── vite.config.js
+├── README.md
+└── .gitignore
 ```
 
-## Cài đặt
+## Yêu cầu hệ thống
 
-### 1. Clone dự án
+- Node.js >= 18
+- npm
+- Git
+
+## Cài đặt và chạy dự án
+
+### 1. Clone repository
 
 ```bash
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
+git clone <link-github-repository>
+cd note_web
 ```
 
-### 2. Cài đặt Backend
-
-```bash
-cd BE
-npm install
-```
-
-Tạo file `.env` trong thư mục `BE/` với nội dung tương tự:
-
-```
-PORT=5000
-DATABASE_URL=your_database_connection_string
-```
-
-Chạy server:
-
-```bash
-npm start
-```
-
-Backend sẽ chạy tại: `http://localhost:5000`
-
-### 3. Cài đặt Frontend
+### 2. Cài đặt frontend
 
 ```bash
 cd FE
 npm install
+npm run dev
 ```
 
-Chạy ứng dụng:
+Sau khi chạy, frontend sẽ mở ở:
 
 ```bash
-npm start
+http://localhost:5173
 ```
 
-Frontend sẽ chạy tại: `http://localhost:3000`
+### 3. Cài đặt backend
 
-## API Endpoints (ví dụ)
+Mở terminal mới và chạy:
 
-| Method | Endpoint | Mô tả |
-|--------|----------|-------|
-| GET    | `/api/notes` | Lấy danh sách tất cả ghi chú |
-| GET    | `/api/notes/:id` | Lấy chi tiết một ghi chú |
-| POST   | `/api/notes` | Tạo ghi chú mới |
-| PUT    | `/api/notes/:id` | Cập nhật ghi chú |
-| DELETE | `/api/notes/:id` | Xóa ghi chú |
+```bash
+cd BE
+npm install
+node index.js
+```
 
-## Hình ảnh minh họa
+Backend sẽ chạy ở:
 
-*(Thêm ảnh chụp màn hình giao diện ứng dụng ở đây nếu có)*
+```bash
+http://localhost:3000
+```
 
-## Hướng phát triển trong tương lai
+## API hiện có
 
-- [ ] Đăng nhập / phân quyền người dùng
-- [ ] Gắn thẻ (tag) cho ghi chú
-- [ ] Chế độ tối (dark mode)
-- [ ] Đồng bộ đa thiết bị
+### GET /api/profile
+Lấy dữ liệu profile public để frontend hiển thị.
+
+### PUT /api/profile
+Cập nhật thông tin profile, bao gồm:
+- displayName
+- preferences.theme
+- password (nếu có)
+
+Dữ liệu lưu trong file:
+
+```bash
+BE/data/profile.json
+```
+
+## Ví dụ luồng hoạt động
+
+1. Frontend gọi `GET /api/profile`
+2. Backend đọc file JSON và trả về dữ liệu public
+3. Người dùng đổi tên / theme trên giao diện
+4. Frontend gửi `PUT /api/profile`
+5. Backend ghi dữ liệu mới vào `profile.json`
+
+## Lưu ý quan trọng
+
+- Không chạy `npm install` ở thư mục gốc vì project không có `package.json` ở root.
+- Frontend và backend là hai project riêng biệt nên phải cài đặt dependency riêng cho từng thư mục.
+- Nếu muốn chạy đồng thời cả hai, hãy mở hai terminal riêng.
+
+## Tài liệu tham khảo nhanh
+
+```bash
+# Frontend
+cd FE
+npm install
+npm run dev
+
+# Backend
+cd BE
+npm install
+node index.js
+```
 
 ## Tác giả
 
-- **Tên của bạn** — [GitHub](https://github.com/<your-username>)
+- Vũ Khoa
 
 ## Giấy phép
 
-Dự án này được phát hành theo giấy phép MIT.
+Dự án này được cung cấp với mục đích học tập và phát triển cá nhân.
