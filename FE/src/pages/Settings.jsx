@@ -1,57 +1,69 @@
 import React, { useState, useEffect } from 'react';
+import { useAppContext } from '../context/AppContext';
+
 function Settings() {
+    const { setDisplayName, setTheme } = useAppContext();
     const [profile, setProfile] = useState({ displayName: '', theme: 'light', password: '' });
-    // Lấy dữ liệu khi vừa load trang
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         fetch('http://localhost:5000/api/profile')
-            .then(res => res.json())
-            .then(data => {
-                setProfile(data);
-                // Đổi màu nền tạm thời dựa theo theme
-                document.body.style.backgroundColor = data.theme === 'dark' ? '#333' : '#fff';
-                document.body.style.color = data.theme === 'dark' ? '#fff' : '#000';
-            });
+        .then(res => res.json())
+        .then(data => {
+            setProfile(data);
+            setDisplayName(data.displayName);
+            setTheme(data.theme);
+            setLoading(false);
+        })
+        .catch(() => setLoading(false));
     }, []);
-    // Hàm xử lý khi gõ vào Input
+
     const handleChange = (e) => {
         setProfile({ ...profile, [e.target.name]: e.target.value });
     };
-    // Hàm xử lý Lưu thay đổi
+
+    const [message, setMessage] = useState('');
+
     const handleSave = () => {
-        fetch('http://localhost:5000/api/profile', {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(profile)
-        })
+    fetch('http://localhost:5000/api/profile', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(profile),
+    })
         .then(res => res.json())
-        .then(data => {
-            alert("Lưu thành công!");
-            // Áp dụng màu nền ngay lập tức
-            document.body.style.backgroundColor = profile.theme === 'dark' ? '#333' : '#fff';
-            document.body.style.color = profile.theme === 'dark' ? '#fff' : '#000';
-        });
+        .then(() => {
+        setDisplayName(profile.displayName);
+        setTheme(profile.theme);
+        setMessage('Lưu thành công!');
+        setTimeout(() => setMessage(''), 2000);
+        })
+        .catch(() => setMessage('Lỗi khi lưu, thử lại sau.'));
     };
+
+    if (loading) return <p>Đang tải...</p>;
+
     return (
-        <div style={{ padding: '20px' }}>
-            <h2>Cài đặt hệ thống</h2>
-            <div>
-                <label>Tên hiển thị: </label>
-                <input name="displayName" value={profile.displayName} onChange={handleChange}/>
-            </div>
-            <div style={{ marginTop: '10px' }}>
-                <label>Giao diện: </label>
-                <select name="theme" value={profile.theme} onChange={handleChange}>
-                <option value="light">Sáng</option>
-                <option value="dark">Tối</option>
-                </select>
-            </div>
-                <div style={{ marginTop: '10px' }}>
-                <label>Mật khẩu vùng kín: </label>
-                <input type="password" name="password" value={profile.password}
-                onChange={handleChange} />
-            </div>
-            <button onClick={handleSave} style={{ marginTop: '20px' }}>Lưu thay đổi</button>
+        <div>
+        <h2>Cài đặt hệ thống</h2>
+        <div style={{ marginBottom: '10px' }}>
+            <label>Tên hiển thị: </label>
+            <input name="displayName" value={profile.displayName} onChange={handleChange} />
+        </div>
+        <div style={{ marginBottom: '10px' }}>
+            <label>Giao diện: </label>
+            <select name="theme" value={profile.theme} onChange={handleChange}>
+            <option value="light">Sáng</option>
+            <option value="dark">Tối</option>
+            </select>
+        </div>
+        <div style={{ marginBottom: '10px' }}>
+            <label>Mật khẩu vùng kín: </label>
+            <input type="password" name="password" value={profile.password} onChange={handleChange} />
+        </div>
+        <button onClick={handleSave}>Lưu thay đổi</button>
+        {message && <p>{message}</p>}
         </div>
     );
 }
+
 export default Settings;
