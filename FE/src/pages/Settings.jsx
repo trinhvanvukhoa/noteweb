@@ -61,7 +61,6 @@ function Settings() {
             <input type="password" name="password" value={profile.password} onChange={handleChange} />
         </div>
         <button onClick={handleSave}>Lưu thay đổi</button>
-        {message && <p>{message}</p>}
         </div>
     );
 }
