@@ -1,18 +1,18 @@
-# SimpleNote
+# NoteWeb
 
-Một ứng dụng web đơn giản để quản lý thông tin cá nhân, cài đặt giao diện và dữ liệu profile theo mô hình frontend + backend tách riêng.
+Dự án web mẫu kết hợp Frontend và Backend để quản lý profile cá nhân, giao diện, và dữ liệu thiết lập người dùng theo mô hình tách riêng.
 
 ## Giới thiệu
 
-SimpleNote là dự án mẫu với hai phần chính:
+NoteWeb là một ứng dụng demo cho phép người dùng:
+- xem và cập nhật tên hiển thị
+- đổi giao diện sáng / tối
+- lưu mật khẩu vùng kín trên backend
+- tương tác với API để đọc và cập nhật profile
+
+Dự án hiện đang được xây dựng theo cấu trúc riêng biệt:
 - Frontend: React + Vite
 - Backend: Node.js + Express
-
-Project này cho phép người dùng:
-- xem và cập nhật tên hiển thị
-- đổi theme giao diện (Sáng / Tối)
-- lưu mật khẩu vùng kín ở backend
-- gọi API từ frontend để đọc và cập nhật dữ liệu profile
 
 ## Công nghệ sử dụng
 
@@ -20,22 +20,21 @@ Project này cho phép người dùng:
 - React
 - Vite
 - React Router DOM
-- TailwindCSS
 
 ### Backend
 - Node.js
 - Express
+- CORS
 
 ## Cấu trúc thư mục
 
 ```bash
-note_web/
+noteweb/
 ├── BE/
 │   ├── data/
 │   │   └── profile.json
-│   ├── index.js
-│   ├── package.json
-│   └── package-lock.json
+│   ├── server.js
+│   └── package.json
 ├── FE/
 │   ├── public/
 │   ├── src/
@@ -44,6 +43,8 @@ note_web/
 │   │   ├── context/
 │   │   │   └── AppContext.jsx
 │   │   ├── pages/
+│   │   │   ├── Home.jsx
+│   │   │   ├── Private.jsx
 │   │   │   └── Settings.jsx
 │   │   ├── App.css
 │   │   ├── App.jsx
@@ -52,9 +53,8 @@ note_web/
 │   ├── eslint.config.js
 │   ├── index.html
 │   ├── package.json
-│   ├── package-lock.json
-│   ├── README.md
-│   └── vite.config.js
+│   ├── vite.config.js
+│   └── README.md
 ├── README.md
 └── .gitignore
 ```
@@ -70,89 +70,106 @@ note_web/
 ### 1. Clone repository
 
 ```bash
-git clone <link-github-repository>
-cd note_web
+git clone <link-repository>
+cd noteweb
 ```
 
-### 2. Cài đặt frontend
-
-```bash
-cd FE
-npm install
-npm run dev
-```
-
-Sau khi chạy, frontend sẽ mở ở:
-
-```bash
-http://localhost:5173
-```
-
-### 3. Cài đặt backend
-
-Mở terminal mới và chạy:
+### 2. Khởi động backend
 
 ```bash
 cd BE
 npm install
-node index.js
+node server.js
 ```
 
-Backend sẽ chạy ở:
+Backend sẽ chạy tại:
 
 ```bash
 http://localhost:3000
 ```
 
+### 3. Khởi động frontend
+
+Mở terminal mới và chạy:
+
+```bash
+cd FE
+npm install
+npm run dev
+```
+
+Frontend sẽ chạy tại:
+
+```bash
+http://localhost:5173
+```
+
+> Lưu ý: backend đang chạy trên cổng 3000 để tránh xung đột với dịch vụ hệ thống macOS trên cổng 5000.
+
 ## API hiện có
 
 ### GET /api/profile
-Lấy dữ liệu profile public để frontend hiển thị.
+Trả về dữ liệu profile hiện tại từ file JSON.
 
 ### PUT /api/profile
-Cập nhật thông tin profile, bao gồm:
+Cập nhật dữ liệu profile, bao gồm:
 - displayName
-- preferences.theme
-- password (nếu có)
+- theme
+- password
 
-Dữ liệu lưu trong file:
+Dữ liệu được lưu ở:
 
 ```bash
 BE/data/profile.json
 ```
 
-## Ví dụ luồng hoạt động
+Ví dụ dữ liệu:
+
+```json
+{
+  "displayName": "Sinh viên",
+  "theme": "light",
+  "password": ""
+}
+```
+
+## Luồng hoạt động
 
 1. Frontend gọi `GET /api/profile`
-2. Backend đọc file JSON và trả về dữ liệu public
-3. Người dùng đổi tên / theme trên giao diện
-4. Frontend gửi `PUT /api/profile`
-5. Backend ghi dữ liệu mới vào `profile.json`
+2. Backend đọc file JSON và trả về dữ liệu
+3. Người dùng chỉnh sửa tên hiển thị, theme hoặc mật khẩu
+4. Frontend gửi dữ liệu qua `PUT /api/profile`
+5. Backend ghi lại dữ liệu mới vào `profile.json`
 
-## Lưu ý quan trọng
+## Ghi chú
 
-- Không chạy `npm install` ở thư mục gốc vì project không có `package.json` ở root.
-- Frontend và backend là hai project riêng biệt nên phải cài đặt dependency riêng cho từng thư mục.
-- Nếu muốn chạy đồng thời cả hai, hãy mở hai terminal riêng.
+- Dự án này là mô hình demo, không phải sản phẩm hoàn chỉnh về note management.
+- Frontend và Backend chạy độc lập, nên cần mở hai terminal riêng nếu chạy đồng thời.
+- Không chạy `npm install` ở thư mục gốc vì root project không có `package.json`.
 
-## Tài liệu tham khảo nhanh
+## Cách chạy nhanh
 
 ```bash
+# Backend
+cd BE
+npm install
+node server.js
+
 # Frontend
 cd FE
 npm install
 npm run dev
-
-# Backend
-cd BE
-npm install
-node index.js
 ```
 
 ## Tác giả
 
 - Vũ Khoa
 
-## Giấy phép
+## Mục đích dự án
 
-Dự án này được cung cấp với mục đích học tập và phát triển cá nhân.
+Dự án này nhằm mục đích học tập về:
+- React Router
+- Context API
+- Fetch API / REST
+- Node.js + Express
+- Tách riêng frontend/backend trong một ứng dụng web đơn giản
