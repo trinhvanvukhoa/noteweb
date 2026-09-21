@@ -1,6 +1,5 @@
-import React, { createContext, useState, useContext } from 'react';
-
-const AppContext = createContext();
+import { useState } from 'react';
+import { AppContext } from './useAppContext';
 
 export function AppProvider({ children }) {
   const [displayName, setDisplayName] = useState('');
@@ -11,8 +10,4 @@ export function AppProvider({ children }) {
       {children}
     </AppContext.Provider>
   );
-}
-
-export function useAppContext() {
-  return useContext(AppContext);
 }

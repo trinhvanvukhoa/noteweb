@@ -1,4 +1,7 @@
+import PrivateNotes from './PrivateNotes';
+
 function Private() {
-  return <h2>Vùng kín — Sprint 3</h2>;
+  return <PrivateNotes />;
 }
+
 export default Private;

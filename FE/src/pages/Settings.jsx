@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useAppContext } from '../context/AppContext';
+import { useState, useEffect } from 'react';
+import { useAppContext } from '../context/useAppContext';
+
+const inputClass =
+  'rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 outline-none transition focus:border-honey dark:border-gray-600 dark:bg-gray-900 dark:text-white';
 
 function Settings() {
     const { setDisplayName, setTheme } = useAppContext();
@@ -17,7 +20,7 @@ function Settings() {
             setLoading(false);
         })
         .catch(() => setLoading(false));
-    }, []);
+    }, [setDisplayName, setTheme]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -45,33 +48,70 @@ function Settings() {
         .catch(() => setMessage('Lỗi khi lưu, thử lại sau.'));
     };
 
-    if (loading) return <p>Đang tải...</p>;
+    if (loading) return <p className="text-gray-500">Đang tải...</p>;
 
     return (
-        <div>
-            <h2>Cài đặt hệ thống</h2>
+        <div className="max-w-lg">
+            <h2 className="mb-4 text-xl font-semibold sm:mb-5 sm:text-2xl">Cài đặt hệ thống</h2>
 
-            <div style={{ marginBottom: '10px' }}>
-                <label>Tên hiển thị: </label>
-                <input name="displayName" value={profile.displayName} onChange={handleChange} />
+            <div className="mb-4">
+                <label className="mb-1 block text-sm font-medium">Tên hiển thị</label>
+                <input
+                    name="displayName"
+                    value={profile.displayName}
+                    onChange={handleChange}
+                    className={`${inputClass} w-full`}
+                />
             </div>
 
-            <div style={{ marginBottom: '10px' }}>
-                <label>Giao diện: </label>
-                <select name="theme" value={profile.theme} onChange={handleChange}>
-                    <option value="light">Sáng</option>
-                    <option value="dark">Tối</option>
-                </select>
+            <div className="mb-4">
+                <span className="mb-1 block text-sm font-medium">Giao diện</span>
+                <div className="flex gap-6">
+                    <label className="flex cursor-pointer items-center gap-2 text-sm">
+                        <input
+                            type="radio"
+                            name="theme"
+                            value="light"
+                            checked={profile.theme === 'light'}
+                            onChange={handleChange}
+                            className="accent-honey"
+                        />
+                        Sáng
+                    </label>
+                    <label className="flex cursor-pointer items-center gap-2 text-sm">
+                        <input
+                            type="radio"
+                            name="theme"
+                            value="dark"
+                            checked={profile.theme === 'dark'}
+                            onChange={handleChange}
+                            className="accent-honey"
+                        />
+                        Tối
+                    </label>
+                </div>
             </div>
 
-            <div style={{ marginBottom: '10px' }}>
-                <label>Mật khẩu vùng kín: </label>
-                <input type="password" name="password" value={profile.password} onChange={handleChange} />
+            <div className="mb-4">
+                <label className="mb-1 block text-sm font-medium">Mật khẩu vùng kín</label>
+                <input
+                    type="password"
+                    name="password"
+                    value={profile.password}
+                    onChange={handleChange}
+                    className={`${inputClass} w-full`}
+                />
             </div>
 
-            <button onClick={handleSave}>Lưu thay đổi</button>
-
-            {message && <p style={{ marginTop: '10px' }}>{message}</p>}
+            <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-3">
+                <button
+                    onClick={handleSave}
+                    className="rounded-md bg-honey px-4 py-2 text-sm font-medium text-gray-900 transition hover:bg-honey-dark"
+                >
+                    Lưu thay đổi
+                </button>
+                {message && <span className="text-sm">{message}</span>}
+            </div>
         </div>
     );
 }

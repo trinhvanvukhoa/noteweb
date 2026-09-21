@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1789000000001",
+    "title": "Nhật ký cá nhân",
+    "content": "Hôm nay hoàn thành xong giao diện NoteWeb, cảm thấy khá hài lòng.",
+    "createdAt": "2026-09-21T13:00:00.000Z"
+  },
+  {
+    "id": "1789000000002",
+    "title": "Mục tiêu tháng 9",
+    "content": "Tập thể dục 3 buổi/tuần, đọc xong 1 cuốn sách.",
+    "createdAt": "2026-09-10T08:00:00.000Z"
+  },
+  {
+    "id": "1789000000003",
+    "title": "Kế hoạch tiết kiệm",
+    "content": "Mỗi tháng để dành 20% thu nhập cho quỹ dự phòng.",
+    "createdAt": "2025-12-01T02:30:00.000Z"
+  },
+  {
+    "id": "1789000000004",
+    "title": "Danh sách điều ước",
+    "content": "1. Đi Nhật mùa hoa anh đào\n2. Học xong React\n3. Chạy 10km",
+    "createdAt": "2024-08-15T16:45:00.000Z"
+  }
+]
