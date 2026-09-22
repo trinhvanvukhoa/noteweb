@@ -3,16 +3,16 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const app = express();
-app.use(cors()); // Cho phép FE gọi API
-app.use(express.json()); // Đọc dữ liệu JSON từ FE gửi lên
+app.use(cors()); 
+app.use(express.json()); 
 const profilePath = path.join(__dirname, 'data', 'profile.json');
 const notesDir = path.join(__dirname, 'data', 'notes');
-// Chỉ cho phép chủ đề gồm chữ, số, gạch ngang/gạch dưới để tránh path traversal
+
 const notesFile = (topic) => {
     if (!/^[a-zA-Z0-9_-]+$/.test(topic)) return null;
     return path.join(notesDir, `${topic}.json`);
 };
-// Đọc file JSON, luôn trả về mảng
+
 const readNotes = (notesPath) => {
     try {
         const data = JSON.parse(fs.readFileSync(notesPath, 'utf8'));
