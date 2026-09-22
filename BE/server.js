@@ -35,7 +35,7 @@ app.get('/api/profile', (req, res) => {
 app.put('/api/profile', (req, res) => {
     try {
         const newProfile = req.body;
-        // Ghi đè dữ liệu mới vào file
+        
         fs.writeFileSync(profilePath, JSON.stringify(newProfile, null, 2), 'utf8');
         res.json({ success: true, message: "Đã cập nhật Profile" });
     } catch (error) {
@@ -46,7 +46,7 @@ app.put('/api/profile', (req, res) => {
 app.get('/api/notes/:topic', (req, res) => {
     const notesPath = notesFile(req.params.topic);
     if (!notesPath) return res.status(400).json({ message: "Chủ đề không hợp lệ" });
-    // File chưa tồn tại -> readNotes trả về mảng rỗng
+    
     res.json(readNotes(notesPath));
 });
 // API 4: Thêm ghi chú mới theo chủ đề
