@@ -1,175 +1,38 @@
-# NoteWeb
-
-Dự án web mẫu kết hợp Frontend và Backend để quản lý profile cá nhân, giao diện, và dữ liệu thiết lập người dùng theo mô hình tách riêng.
-
-## Giới thiệu
-
-NoteWeb là một ứng dụng demo cho phép người dùng:
-- xem và cập nhật tên hiển thị
-- đổi giao diện sáng / tối
-- lưu mật khẩu vùng kín trên backend
-- tương tác với API để đọc và cập nhật profile
-
-Dự án hiện đang được xây dựng theo cấu trúc riêng biệt:
-- Frontend: React + Vite
-- Backend: Node.js + Express
-
-## Công nghệ sử dụng
-
-### Frontend
-- React
-- Vite
-- React Router DOM
-
-### Backend
-- Node.js
-- Express
-- CORS
-
-## Cấu trúc thư mục
-
+# ĐỒ ÁN MÔN HỌC: ỨNG DỤNG QUẢN LÝ GHI CHÚ (REACTJS & NODEJS)
+**Giảng viên hướng dẫn:** [Tên giảng viên]
+**Nhóm thực hiện:** Nhóm [Số nhóm]
+**Thành viên:**
+1. [Trịnh Văn Vũ Khoa] - [0306241458] - Vai trò: PM & QA
+2. [Lê Khang] - [0306241452] - Vai trò: Frontend Developer
+3. [Tạ Nguyễn Đăng Khoa] - [0306241457] - Vai trò: Frontend Developer
+4. [Lê Đức Tiến] - [0306241496] - Vai trò: Backend Developer
+## 1. Công nghệ sử dụng
+- **Frontend:** ReactJS (Vite), React Router DOM.
+- **Backend:** Node.js, Express.js.
+- **Cơ sở dữ liệu:** File System (lưu trữ bằng định dạng `.json` để dễ quản lý và
+triển khai).
+## 2. Yêu cầu môi trường
+- Máy tính cần cài đặt sẵn **Node.js** (phiên bản v16 trở lên).
+## 3. Hướng dẫn Cài đặt & Chạy dự án (Rất quan trọng)
+Dự án được chia làm 2 phần chạy độc lập. Vui lòng mở 2 cửa sổ Terminal (Command
+Prompt) để chạy song song.
+### Bước 1: Khởi động Backend (Máy chủ API)
+Mở Terminal 1, di chuyển vào thư mục `backend` và chạy lệnh:
 ```bash
-noteweb/
-├── BE/
-│   ├── data/
-│   │   └── profile.json
-│   ├── server.js
-│   └── package.json
-├── FE/
-│   ├── public/
-│   ├── src/
-│   │   ├── assets/
-│   │   ├── components/
-│   │   ├── context/
-│   │   │   └── AppContext.jsx
-│   │   ├── pages/
-│   │   │   ├── Home.jsx
-│   │   │   ├── Private.jsx
-│   │   │   └── Settings.jsx
-│   │   ├── App.css
-│   │   ├── App.jsx
-│   │   ├── index.css
-│   │   └── main.jsx
-│   ├── eslint.config.js
-│   ├── index.html
-│   ├── package.json
-│   ├── vite.config.js
-│   └── README.md
-├── README.md
-└── .gitignore
-```
-
-## Yêu cầu hệ thống
-
-- Node.js >= 18
-- npm
-- Git
-
-## Cài đặt và chạy dự án
-
-### 1. Clone repository
-
-```bash
-git clone <link-repository>
-cd noteweb
-```
-
-### 2. Khởi động backend
-
-```bash
-cd BE
+cd backend
 npm install
 node server.js
-```
-
-Backend sẽ chạy tại:
-
-```bash
-http://localhost:3000
-```
-
-### 3. Khởi động frontend
-
-Mở terminal mới và chạy:
-
-```bash
-cd FE
+Lưu ý: Backend sẽ chạy tại http://localhost:5000. Hệ thống sẽ tự động sinh thư mục
+data/ chứa các file JSON. Vui lòng không xóa thư mục này khi đang chạy ứng dụng.
+Bước 2: Khởi động Frontend (Giao diện)
+Mở Terminal 2, di chuyển vào thư mục frontend và chạy lệnh:
+cd frontend
 npm install
 npm run dev
-```
-
-Frontend sẽ chạy tại:
-
-```bash
-http://localhost:5173
-```
-
-> Lưu ý: backend đang chạy trên cổng 3000 để tránh xung đột với dịch vụ hệ thống macOS trên cổng 5000.
-
-## API hiện có
-
-### GET /api/profile
-Trả về dữ liệu profile hiện tại từ file JSON.
-
-### PUT /api/profile
-Cập nhật dữ liệu profile, bao gồm:
-- displayName
-- theme
-- password
-
-Dữ liệu được lưu ở:
-
-```bash
-BE/data/profile.json
-```
-
-Ví dụ dữ liệu:
-
-```json
-{
-  "displayName": "Sinh viên",
-  "theme": "light",
-  "password": ""
-}
-```
-
-## Luồng hoạt động
-
-1. Frontend gọi `GET /api/profile`
-2. Backend đọc file JSON và trả về dữ liệu
-3. Người dùng chỉnh sửa tên hiển thị, theme hoặc mật khẩu
-4. Frontend gửi dữ liệu qua `PUT /api/profile`
-5. Backend ghi lại dữ liệu mới vào `profile.json`
-
-## Ghi chú
-
-- Dự án này là mô hình demo, không phải sản phẩm hoàn chỉnh về note management.
-- Frontend và Backend chạy độc lập, nên cần mở hai terminal riêng nếu chạy đồng thời.
-- Không chạy `npm install` ở thư mục gốc vì root project không có `package.json`.
-
-## Cách chạy nhanh
-
-```bash
-# Backend
-cd BE
-npm install
-node server.js
-
-# Frontend
-cd FE
-npm install
-npm run dev
-```
-
-## Tác giả
-
-- Vũ Khoa
-
-## Mục đích dự án
-
-Dự án này nhằm mục đích học tập về:
-- React Router
-- Context API
-- Fetch API / REST
-- Node.js + Express
-- Tách riêng frontend/backend trong một ứng dụng web đơn giản
+Lưu ý: Frontend sẽ chạy tại http://localhost:5173 (hoặc cổng khác hiển thị trên
+terminal). Mở đường dẫn này trên trình duyệt (Khuyến nghị Google Chrome) để sử dụng
+hệ thống.
+4. Tài khoản / Mật khẩu Demo
+Web không yêu cầu đăng nhập tài khoản.
+Để xem khu vực Ghi chú riêng tư, vui lòng vào menu "Cài đặt" để tạo mật khẩu mới.
+---
