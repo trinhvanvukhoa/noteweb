@@ -1,23 +1,34 @@
 # ĐỒ ÁN MÔN HỌC: ỨNG DỤNG QUẢN LÝ GHI CHÚ (REACTJS & NODEJS)
-**Giảng viên hướng dẫn:** [Tên giảng viên]
-**Nhóm thực hiện:** Nhóm [Số nhóm]
+
+**Giảng viên hướng dẫn:** Lữ Cao Tiến
+**Nhóm thực hiện:** Nhóm 1
 **Thành viên:**
+
 1. [Trịnh Văn Vũ Khoa] - [0306241458] - Vai trò: PM & QA
 2. [Lê Khang] - [0306241452] - Vai trò: Frontend Developer
 3. [Tạ Nguyễn Đăng Khoa] - [0306241457] - Vai trò: Frontend Developer
 4. [Lê Đức Tiến] - [0306241496] - Vai trò: Backend Developer
+
 ## 1. Công nghệ sử dụng
+
 - **Frontend:** ReactJS (Vite), React Router DOM.
 - **Backend:** Node.js, Express.js.
 - **Cơ sở dữ liệu:** File System (lưu trữ bằng định dạng `.json` để dễ quản lý và
-triển khai).
+  triển khai).
+
 ## 2. Yêu cầu môi trường
+
 - Máy tính cần cài đặt sẵn **Node.js** (phiên bản v16 trở lên).
+
 ## 3. Hướng dẫn Cài đặt & Chạy dự án (Rất quan trọng)
+
 Dự án được chia làm 2 phần chạy độc lập. Vui lòng mở 2 cửa sổ Terminal (Command
 Prompt) để chạy song song.
+
 ### Bước 1: Khởi động Backend (Máy chủ API)
+
 Mở Terminal 1, di chuyển vào thư mục `backend` và chạy lệnh:
+
 ```bash
 cd backend
 npm install
@@ -36,3 +47,4 @@ hệ thống.
 Web không yêu cầu đăng nhập tài khoản.
 Để xem khu vực Ghi chú riêng tư, vui lòng vào menu "Cài đặt" để tạo mật khẩu mới.
 ---
+```
