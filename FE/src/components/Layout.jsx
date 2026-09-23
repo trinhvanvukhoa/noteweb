@@ -4,17 +4,15 @@ import Logo from './Logo';
 import { HomeIcon, StatsIcon, SettingsIcon, LockIcon } from './NavIcons';
 
 const navClass = ({ isActive }) =>
-  `whitespace-nowrap rounded-md px-3 py-2 text-sm transition ${
-    isActive
-      ? 'font-bold'
-      : 'font-normal hover:bg-honey/15 dark:hover:bg-gray-700'
+  `whitespace-nowrap rounded-md px-3 py-2 text-sm transition ${isActive
+    ? 'font-bold'
+    : 'font-normal hover:bg-honey/15 dark:hover:bg-gray-700'
   }`;
-
+// da chinh sua 
 const dockClass = ({ isActive }) =>
-  `flex flex-1 items-center justify-center py-3 transition ${
-    isActive
-      ? 'text-honey-dark dark:text-honey'
-      : 'text-gray-400 dark:text-gray-500'
+  `flex flex-1 items-center justify-center py-3 transition ${isActive
+    ? 'text-honey-dark dark:text-honey'
+    : 'text-gray-400 dark:text-gray-500'
   }`;
 
 function Layout() {
