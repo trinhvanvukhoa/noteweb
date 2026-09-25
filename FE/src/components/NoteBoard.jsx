@@ -9,7 +9,7 @@ const request = (url, options) =>
 const inputClass =
   'w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 outline-none transition focus:border-honey dark:border-gray-600 dark:bg-gray-900 dark:text-white';
 
-const PAGE_SIZE = 6; // số ghi chú mỗi trang, chỉnh tùy ý
+const PAGE_SIZE = 8; // số ghi chú mỗi trang
 
 function NoteBoard({ baseUrl, accent = 'bg-honey hover:bg-honey-dark' }) {
   const [notes, setNotes] = useState([]);
@@ -25,6 +25,17 @@ function NoteBoard({ baseUrl, accent = 'bg-honey hover:bg-honey-dark' }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('newest'); // newest | oldest | title-asc | title-desc
   const [currentPage, setCurrentPage] = useState(1);
+
+  // Lưu lại bộ lọc trước đó để phát hiện thay đổi ngay trong lúc render
+  const [prevFilters, setPrevFilters] = useState({ searchTerm, sortBy, baseUrl });
+  if (
+    prevFilters.searchTerm !== searchTerm ||
+    prevFilters.sortBy !== sortBy ||
+    prevFilters.baseUrl !== baseUrl
+  ) {
+    setPrevFilters({ searchTerm, sortBy, baseUrl });
+    setCurrentPage(1);
+  }
 
   const isViewing = viewingId !== null;
 
@@ -48,12 +59,6 @@ function NoteBoard({ baseUrl, accent = 'bg-honey hover:bg-honey-dark' }) {
       ignore = true;
     };
   }, [baseUrl, reloadKey]);
-
-  // Mỗi khi đổi từ khóa tìm kiếm / kiểu sắp xếp / đổi chủ đề (đổi baseUrl)
-  // thì quay về trang 1 để tránh trang trống.
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [searchTerm, sortBy, baseUrl]);
 
   // ---- Lọc theo từ khóa (tiêu đề + nội dung, không phân biệt hoa thường) ----
   const filteredNotes = useMemo(() => {
