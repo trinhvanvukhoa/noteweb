@@ -22,7 +22,7 @@ function Layout() {
   return (
     <div className={isDark ? 'dark' : ''}>
       <div className="min-h-screen overflow-x-hidden bg-cream text-gray-900 transition-colors dark:bg-gray-900 dark:text-white">
-        <header className="sticky top-0 z-10 border-b border-gray-200 bg-white/95 backdrop-blur dark:border-gray-700 dark:bg-gray-800/95">
+        <header className="fixed inset-x-0 top-0 z-10 border-b border-gray-200 bg-white/95 backdrop-blur dark:border-gray-700 dark:bg-gray-800/95">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3 sm:px-6 sm:py-4">
             <NavLink to="/" end className="flex items-center gap-2">
               <Logo className="h-8 w-8" />
@@ -45,7 +45,7 @@ function Layout() {
           </div>
         </header>
 
-        <main className="mx-auto max-w-6xl p-4 pb-24 sm:p-6">
+        <main className="mx-auto max-w-6xl p-4 pt-20 pb-24 sm:p-6">
           <Outlet />
         </main>
 
