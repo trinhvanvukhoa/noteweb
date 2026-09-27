@@ -1,56 +1,122 @@
 [
   {
-    "id": "1789000000001",
+    "id": "1790318700000",
+    "title": "Cảm nghĩ hôm nay",
+    "content": "Một ngày làm việc năng suất, hoàn thành nhiều task.",
+    "createdAt": "2026-09-25T06:45:00.000Z"
+  },
+  {
+    "id": "1790318700000",
+    "title": "Điều muốn cải thiện",
+    "content": "Quản lý thời gian tốt hơn, tránh trì hoãn.",
+    "createdAt": "2026-09-25T06:45:00.000Z"
+  },
+  {
+    "id": "1790318700000",
+    "title": "Ghi chú nhỏ",
+    "content": "Nhớ gọi điện hỏi thăm gia đình cuối tuần.",
+    "createdAt": "2026-09-25T06:45:00.000Z"
+  },
+  {
+    "id": "1790318640000",
+    "title": "Suy nghĩ cuối tuần",
+    "content": "Cảm thấy cần cân bằng hơn giữa học tập và nghỉ ngơi.",
+    "createdAt": "2026-09-25T06:44:00.000Z"
+  },
+  {
+    "id": "1790318640000",
+    "title": "Ghi chú riêng",
+    "content": "Nhắc bản thân kiên nhẫn hơn khi debug code.",
+    "createdAt": "2026-09-25T06:44:00.000Z"
+  },
+  {
+    "id": "1790283600000",
+    "title": "Nhật ký học tập",
+    "content": "Hôm nay hiểu sâu hơn về React Router, thấy tự tin hơn.",
+    "createdAt": "2026-09-24T21:00:00.000Z"
+  },
+  {
+    "id": "1789995600000",
     "title": "Nhật ký cá nhân",
     "content": "Hôm nay hoàn thành xong giao diện NoteWeb, cảm thấy khá hài lòng.",
     "createdAt": "2026-09-21T13:00:00.000Z"
   },
   {
-    "id": "1789000000002",
+    "id": "1789462800000",
+    "title": "Mục tiêu năm 2026",
+    "content": "Hoàn thành đồ án tốt nghiệp, cải thiện tiếng Anh.",
+    "createdAt": "2026-09-15T09:00:00.000Z"
+  },
+  {
+    "id": "1789027200000",
     "title": "Mục tiêu tháng 9",
     "content": "Tập thể dục 3 buổi/tuần, đọc xong 1 cuốn sách.",
     "createdAt": "2026-09-10T08:00:00.000Z"
   },
   {
-    "id": "1789000000003",
+    "id": "1788631200000",
+    "title": "Suy ngẫm về công việc nhóm",
+    "content": "Học được cách giao tiếp hiệu quả hơn với đồng đội.",
+    "createdAt": "2026-09-05T18:00:00.000Z"
+  },
+  {
+    "id": "1787265000000",
+    "title": "Kế hoạch sức khỏe",
+    "content": "Ngủ đủ 7-8 tiếng mỗi ngày, hạn chế thức khuya.",
+    "createdAt": "2026-08-20T22:30:00.000Z"
+  },
+  {
+    "id": "1785568500000",
+    "title": "Ghi chú động lực",
+    "content": "Nhắc bản thân: cố gắng từng ngày sẽ có kết quả.",
+    "createdAt": "2026-08-01T07:15:00.000Z"
+  },
+  {
+    "id": "1785528000000",
+    "title": "Nhật ký cuối tháng 7",
+    "content": "Nhìn lại một tháng bận rộn nhưng nhiều tiến bộ.",
+    "createdAt": "2026-07-31T20:00:00.000Z"
+  },
+  {
+    "id": "1784104200000",
+    "title": "Kế hoạch đọc sách",
+    "content": "Đặt mục tiêu đọc 1 cuốn sách kỹ năng mỗi tháng.",
+    "createdAt": "2026-07-15T08:30:00.000Z"
+  },
+  {
+    "id": "1782673200000",
+    "title": "Suy nghĩ về tương lai",
+    "content": "Cân nhắc định hướng chuyên sâu về phát triển web.",
+    "createdAt": "2026-06-28T19:00:00.000Z"
+  },
+  {
+    "id": "1781127900000",
+    "title": "Ghi chú biết ơn",
+    "content": "Biết ơn gia đình và bạn bè đã luôn ủng hộ.",
+    "createdAt": "2026-06-10T21:45:00.000Z"
+  },
+  {
+    "id": "1779314400000",
+    "title": "Nhật ký một ngày mệt mỏi",
+    "content": "Áp lực deadline nhưng đã cố gắng hoàn thành đúng hạn.",
+    "createdAt": "2026-05-20T22:00:00.000Z"
+  },
+  {
+    "id": "1777629600000",
+    "title": "Kế hoạch cân bằng cuộc sống",
+    "content": "Dành thời gian cho sở thích cá nhân mỗi tuần.",
+    "createdAt": "2026-05-01T10:00:00.000Z"
+  },
+  {
+    "id": "1764556200000",
     "title": "Kế hoạch tiết kiệm",
     "content": "Mỗi tháng để dành 20% thu nhập cho quỹ dự phòng.",
     "createdAt": "2025-12-01T02:30:00.000Z"
   },
   {
-    "id": "1789000000004",
+    "id": "1723740300000",
     "title": "Danh sách điều ước",
     "content": "1. Đi Nhật mùa hoa anh đào\n2. Học xong React\n3. Chạy 10km",
     "createdAt": "2024-08-15T16:45:00.000Z"
-  },
-  {
-    "id": "1790318695184",
-    "title": "123",
-    "content": "123",
-    "createdAt": "2026-09-25T06:44:55.184Z"
-  },
-  {
-    "id": "1790318698267",
-    "title": "122ws",
-    "content": "",
-    "createdAt": "2026-09-25T06:44:58.267Z"
-  },
-  {
-    "id": "1790318700552",
-    "title": "wetffgg",
-    "content": "",
-    "createdAt": "2026-09-25T06:45:00.552Z"
-  },
-  {
-    "id": "1790318705841",
-    "title": "wwrd",
-    "content": "",
-    "createdAt": "2026-09-25T06:45:05.841Z"
-  },
-  {
-    "id": "1790318708886",
-    "title": "dffgh",
-    "content": "",
-    "createdAt": "2026-09-25T06:45:08.886Z"
   }
 ]
