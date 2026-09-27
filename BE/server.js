@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
@@ -59,7 +60,7 @@ app.post('/api/notes/:topic', (req, res) => {
         const notes = readNotes(notesPath);
 
         const newNote = {
-            id: Date.now().toString(),
+            id: crypto.randomUUID(),
             title,
             content,
             createdAt: new Date().toISOString()
@@ -170,7 +171,7 @@ app.post('/api/private/notes', (req, res) => {
     try {
         const notes = readNotes(privateNotesFile);
         const newNote = {
-            id: Date.now().toString(),
+            id: crypto.randomUUID(),
             title: req.body.title || "Lưu bút mật",
             content: req.body.content || "",
             createdAt: new Date().toISOString()
