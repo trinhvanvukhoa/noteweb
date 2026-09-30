@@ -4,10 +4,10 @@
 **Nhóm thực hiện:** Nhóm 1
 **Thành viên:**
 
-1. [Trịnh Văn Vũ Khoa] - [0306241458] - Vai trò: PM & QA
-2. [Lê Khang] - [0306241452] - Vai trò: Frontend Developer
-3. [Tạ Nguyễn Đăng Khoa] - [0306241457] - Vai trò: Frontend Developer
-4. [Lê Đức Tiến] - [0306241496] - Vai trò: Backend Developer
+1. Trịnh Văn Vũ Khoa - 0306241458 - Vai trò: PM & QA
+2. Lê Khang - 0306241452 - Vai trò: Frontend Developer
+3. Tạ Nguyễn Đăng Khoa - 0306241457 - Vai trò: Frontend Developer
+4. Lê Đức Tiến - 0306241496 - Vai trò: Backend Developer
 
 ## 1. Công nghệ sử dụng
 
